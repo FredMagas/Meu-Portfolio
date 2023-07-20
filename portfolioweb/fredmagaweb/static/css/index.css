@@ -179,6 +179,10 @@ h2 {
     color: white;
 }
 
+.portfolio {
+    padding-top: 10vh;
+}
+
 .forms {
     padding-top: 10vh;
 }
@@ -251,4 +255,78 @@ footer {
     align-items: center;
     margin: none;
     padding-top: 5vh;
+}
+
+
+
+/* Estilo base */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.grid-item {
+    padding: 2vh;
+    text-align: center;
+    background-color: #1a3564;
+    border-radius: 1.5vh;
+}
+
+.port-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.port-techs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2vh;
+    margin-bottom: 3vh;
+}
+
+.grid-item img {
+    max-width: 100%;
+}
+
+.port-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item button {
+    margin: 0.5vh;
+    font-weight: bold;
+    background-color: #33db96;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    padding: 1.5vh;
+    border-radius: 1vh;
+    cursor: pointer;
+}
+
+.grid-item button:hover {
+    background-color: #18744d;
+}
+
+.grid-item h5 {
+    color: white;
+    margin: 0;
+    padding: 4vh;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
 }
