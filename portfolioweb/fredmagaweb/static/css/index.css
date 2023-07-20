@@ -1,0 +1,226 @@
+body {
+    margin: 20vh;
+    margin-top: 3vh;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+    background-color: #0b182f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nome {
+    color: white
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav a {
+    font-weight: bold;
+    color: #33db96;
+    text-decoration: none;
+    list-style: none;
+    margin: 2vh;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.apresentacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10vh;
+}
+
+.chamada {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-perfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.img-perfil img {
+    margin: 0 auto;
+    max-width: 190%;
+    max-height: 190%;
+    margin-top: 40px;
+    rotate: 10px;
+    transform: rotate(-18deg);
+}
+
+.text-apt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.text-apt h4 {
+    color: white;
+}
+
+.btn-sobre {
+    font-weight: bold;
+    background-color: #33db96;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    padding: 1.5vh;
+    border-radius: 1vh;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #18744d;
+}
+
+.sobre {
+    padding-top: 20vh;
+}
+
+h2 {
+    color: #33db96;
+}
+
+.sobre h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    color: white;
+}
+
+.sobre ul {
+    list-style: none;
+}
+
+.sobre ul li {
+    line-height: 1.5;
+}
+
+.sobre ul li::before {
+    content: "\2022";
+    font-size: 1.2em;
+    color: #33db96;
+    padding-right: 2vh;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.timeline ul {
+    list-style: none;
+    position: relative;
+}
+
+.timeline li {
+    margin-bottom: 30px;
+}
+
+.data {
+    background-color: #33db96;
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.evento {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.habilities {
+    padding-top: 10vh;
+}
+
+.habilities h2 {
+    color: #33db96;
+}
+
+.habilities h4 {
+    color: white;
+}
+
+.forms {
+    padding-top: 10vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    margin: 2vh;
+}
+
+input, textarea {
+    width: 50vw;
+    border: none;
+    border-radius: 1vh;
+    padding: 1.5vh;
+}
+
+select {
+    width: 52vw;
+    border: none;
+    border-radius: 1vh;
+    padding: 1.5vh;
+}
+
+.btn-enviar-contato {
+    width: 25vw;
+    font-weight: bold;
+    background-color: #33db96;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    padding: 1.5vh;
+    border-radius: 1vh;
+}
+
+::placeholder {
+    color: rgb(54, 54, 54);
+}
+
+footer {
+    color: white;
+    padding-top: 10vh;
+}
