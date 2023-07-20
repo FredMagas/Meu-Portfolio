@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
+    <script src="https://kit.fontawesome.com/21bc9e53b5.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Frederico Magalhães</title>
@@ -17,10 +17,12 @@
             </div>
 
             <nav>
-                <li><a href="">Sobre Mim</a></li>
-                <li><a href="">Experiência</a></li>
-                <li><a href="">Soft Skills</a></li>
-                <li><a href="">Portfolio</a></li>
+                <li><a href="#sobre-mim">Sobre Mim</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#soft-skills">Soft Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#links">Links</a></li>
             </nav>
         </div>
     </header>
@@ -43,133 +45,180 @@
                 <img src="{% static 'images/apresentacao-bg.png' %}" alt="">
             </div>
         </div>
+        <section id="sobre-mim">
+            <div class="sobre">
+                <div>
+                    <h2>
+                        Sobre Mim:
+                    </h2>
 
-        <div class="sobre">
-            <div>
-                <h2>
-                    Sobre Mim:
-                </h2>
-
-                <h4>
-                    <ul>
-                        <li>Estudando Python, Django e Front-End desde 2022</li>
-
-                        <li>Cursando Análise e Desenvolvimento de Sistemas</li>
-
-                        <li>Interesse em desenvolvimento Full Stack</li>
-
-                        <li>Buscando uma oportunidade para atuar como desenvolvedor</li>
-                    </ul>
-                </h4>
-            </div>
-        </div>
-
-        <div class="timeline">
-            <ul>
-                <li>
-                    <div class="data">2021</div>
-                    <div class="evento">Graduação Engenharia Mecânica</div>
-                </li>
-
-                <li>
-                    <div class="data">2022</div>
-                    <div class="evento">Me aprofundando na linguagem Python e conhecendo melhor sobre o Django, Front-End e Back-End.</div>
-                </li>
-
-                <li>
-                    <div class="data">2023</div>
-                    <div class="evento">Iniciando curso na EBAC de Full Stack Python, para aprimorar meus conhecimentos de programação.</div>
-                </li>
-
-                <li>
-                    <div class="data">Até o Momento</div>
-                    <div class="evento">Em busca de minha primeira vaga como desenvolvedor.</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="habilities">
-            <div>
-                <h2>
-                    Soft Skills:
-                </h2>
-
-                <h4>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo inventore nisi assumenda blanditiis quas, eaque omnis minus, commodi consequuntur ea, cum odio! Voluptate exercitationem excepturi assumenda reprehenderit earum velit quo.
-                </h4>
-            </div>
-        </div>
-
-        <div class="portfolio">
-
-        </div>
-
-        <div class="forms">
-            <h2>
-                Entre em Contato:
-            </h2>
-            <div class="forms-style">
-                <form method="post" action="">
-                    {% csrf_token %}
-
-                    <div class="form-group">
-                        <input type="text" name="nome" class="form-control" placeholder="Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="E-mail" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="empresa" class="form-control" placeholder="Empresa" required>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <div class="form-group">
-                                <input type="text" name="telefone" class="form-control" placeholder="Telefone" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div class="form-group">
-                                <select name="media" class="form-control">
-                                    <option>Onde me encontrou?</option>
-                                    <option value="Google">Google</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Instagram">Instagram</option>
-                                    <option value="LinkedIn">LinkedIn</option>
-                                    <option value="JaConhecia">Já conhecia</option>
-                                    <option value="Indicacao">Indicação</option>
-                                    <option value="Outros">Outros</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea name="mensagem" rows="8" class="form-control" placeholder="Mensagem" required></textarea>
-                    </div>
-                    <div class="form-group messages">
-                        <button class="btn-enviar-contato">Enviar</button>
-                        {% if messages %}
+                    <h4>
                         <ul>
-                            {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                            {% endfor %}
+                            <li>Estudando Python, Django e Front-End desde 2022</li>
+
+                            <li>Cursando Análise e Desenvolvimento de Sistemas</li>
+
+                            <li>Interesse em desenvolvimento Full Stack</li>
+
+                            <li>Buscando uma oportunidade para atuar como desenvolvedor</li>
                         </ul>
-                        {% endif %}
-                    </div>
-                </form>
+                    </h4>
+                </div>
             </div>
-        </div>
+        </section>
+        <section id="experiencia">
+            <div class="timeline">
+                <ul>
+                    <li>
+                        <div class="data">2021</div>
+                        <div class="evento">Graduação Engenharia Mecânica</div>
+                    </li>
+
+                    <li>
+                        <div class="data">2022</div>
+                        <div class="evento">Me aprofundando na linguagem Python e conhecendo melhor sobre o Django, Front-End e Back-End.</div>
+                    </li>
+
+                    <li>
+                        <div class="data">2023</div>
+                        <div class="evento">Iniciando curso na EBAC de Full Stack Python, para aprimorar meus conhecimentos de programação.</div>
+                    </li>
+
+                    <li>
+                        <div class="data">Até o Momento</div>
+                        <div class="evento">Em busca de minha primeira vaga como desenvolvedor.</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="soft-skills">
+            <div class="habilities">
+                <div>
+                    <h2>
+                        Soft Skills:
+                    </h2>
+
+                    <h4>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo inventore nisi assumenda blanditiis quas, eaque omnis minus, commodi consequuntur ea, cum odio! Voluptate exercitationem excepturi assumenda reprehenderit earum velit quo.
+                    </h4>
+                </div>
+            </div>
+        </section>
+        <section id="portfolio">
+            <div class="portfolio">
+
+            </div>
+        </section>
+        <section id="contato">
+            <div class="forms">
+                <h2>
+                    Entre em Contato:
+                </h2>
+                <div class="forms-style">
+                    <form method="post" action="">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <input type="text" name="nome" class="form-control" placeholder="Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="empresa" class="form-control" placeholder="Empresa" required>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <div class="form-group">
+                                    <input type="text" name="telefone" class="form-control" placeholder="Telefone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <div class="form-group">
+                                    <select name="media" class="form-control">
+                                        <option>Onde me encontrou?</option>
+                                        <option value="Google">Google</option>
+                                        <option value="Facebook">Facebook</option>
+                                        <option value="Instagram">Instagram</option>
+                                        <option value="LinkedIn">LinkedIn</option>
+                                        <option value="JaConhecia">Já conhecia</option>
+                                        <option value="Indicacao">Indicação</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="mensagem" rows="8" class="form-control" placeholder="Mensagem" required></textarea>
+                        </div>
+                        <div class="form-group messages">
+                            <button class="btn-enviar-contato">Enviar</button>
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <div class="onde-encontrar">
-            <h2>Onde me Encontrar:</h2>
-        </div>
-        <div class="redes-sociais">
-            
-        </div>
+        <section id="links">
+            <div class="onde-encontrar">
+                <h2>Onde me Encontrar:</h2>
+            </div>
+            <div class="redes-sociais">
+                <div class="text-redes">
+                    <div>
+                        <a href="https://www.linkedin.com/in/frederico-magalh%C3%A3es/" target="_blank">
+                            <i class="fa-brands fa-linkedin fa-2xl" style="color: #33db96;"></i>
+                        </a>
+                        <h4>
+                            LinkedIn
+                        </h4>
+                    </div>
+
+                    <div>
+                        <a href="https://github.com/FredMagas" target="_blank">
+                            <i class="fa-brands fa-github fa-2xl" style="color: #33db96;"></i>
+                        </a>
+                        <h4>
+                            GitHub
+                        </h4>
+                    </div>
+
+                    <div>
+                        <a href="mailto:fredericomaga@hotmail.com" target="_blank">
+                            <i class="fa-solid fa-envelope fa-2xl" style="color: #33db96;"></i>
+                        </a>
+                        <h4>
+                            E-mail
+                        </h4>
+                    </div>
+
+                    <div>
+                        <a href="https://wa.me//5535997303061?text=Olá, tudo bem? Estamos entrando em contato através do seu site de portfolio." target="_blank">
+                            <i class="fa-brands fa-whatsapp fa-2xl" style="color: #33db96;"></i>
+                        </a>
+                        <h4>
+                            Whatsapp
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="direitos">
+                <h3>Frederico Magalhaes. Todos os direitos reservados.</h3>
+            </div>
+        </section>
     </footer>
 </body>
 </html>

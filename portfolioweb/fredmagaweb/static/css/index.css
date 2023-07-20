@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     margin: 20vh;
     margin-top: 3vh;
@@ -198,7 +202,7 @@ input, textarea {
 }
 
 select {
-    width: 52vw;
+    width: 51.5vw;
     border: none;
     border-radius: 1vh;
     padding: 1.5vh;
@@ -221,6 +225,30 @@ select {
 }
 
 footer {
+    position: relative;
     color: white;
     padding-top: 10vh;
+    margin-bottom: none;
+}
+
+.onde-encontrar {
+    border-top: 1px solid #33db96;
+}
+
+.text-redes {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.direitos {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: none;
+    padding-top: 5vh;
 }
