@@ -7,23 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Frederico Magalhães</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-
 </head>
 <body>
-    <header>
+    <header id="header">
         <div class="navbar">
             <div class="nome">
                 <h1>Frederico Magalhães</h1>
+                <a href="">
+                    <i class="fa-solid fa-gear fa-2xl" style="color: #33db96;"></i>
+                </a>
             </div>
-
-            <nav>
-                <li><a href="#sobre-mim">Sobre Mim</a></li>
-                <li><a href="#experiencia">Experiência</a></li>
-                <li><a href="#soft-skills">Soft Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="#links">Links</a></li>
-            </nav>
+            <div class="topnav" id="myTopnav">
+                <nav id="sidebar-menu">
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa-solid fa-bars fa-xl" style="color: #33db96;"></i>
+                    </a>
+                    <ul>
+                        <li><a href="#sobre-mim">Sobre Mim</a></li>
+                        <li><a href="#experiencia">Experiência</a></li>
+                        <li><a href="#soft-skills">Soft Skills</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#links">Links</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
     <main>
@@ -37,7 +45,9 @@
                         Sou Engenheiro Mecânico em busca de uma oportunidade como Desenvolvedor Python.
                     </h4>
                     <div>
-                        <button class="btn-sobre">Me Contrate!</button>
+                        <a href="#contato">
+                            <button class="btn-sobre">Me Contrate!</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -47,11 +57,11 @@
         </div>
         <section id="sobre-mim">
             <div class="sobre">
-                <div>
-                    <h2>
-                        Sobre Mim:
-                    </h2>
+                <h2>
+                    Sobre Mim:
+                </h2>
 
+                <div>
                     <h4>
                         <ul>
                             <li>Estudando Python, Django e Front-End desde 2022</li>
@@ -63,6 +73,10 @@
                             <li>Buscando uma oportunidade para atuar como desenvolvedor</li>
                         </ul>
                     </h4>
+                </div>
+                
+                <div class="curriculo">
+                    <button class="btn-curriculo">Download CV</button>
                 </div>
             </div>
         </section>
@@ -122,8 +136,7 @@
                             <i class="fa-brands fa-js fa-lg" style="color: #33db96;"></i>
                         </div>
                         <div class="port-btn">
-                            <button>Botão 1</button>
-                            <button>Botão 2</button>
+                            <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
                         </div>
                     </div>
 
@@ -140,8 +153,8 @@
                             <i class="fa-brands fa-js fa-lg" style="color: #33db96;"></i>
                         </div>
                         <div class="port-btn">
-                            <button>Botão 1</button>
-                            <button>Botão 2</button>
+                            <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
+                            <button><i class="fa-brands fa-github fa-lg" style="color: #ffffff;"></i>GitHub</button>
                         </div>
                     </div>
 
@@ -157,8 +170,8 @@
                             <i class="fa-brands fa-js fa-lg" style="color: #33db96;"></i>
                         </div>
                         <div class="port-btn">
-                            <button>Botão 1</button>
-                            <button>Botão 2</button>
+                            <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
+                            <button><i class="fa-brands fa-github fa-lg" style="color: #ffffff;"></i>GitHub</button>
                         </div>
                     </div>
                 </div>
@@ -170,7 +183,7 @@
                     Entre em Contato:
                 </h2>
                 <div class="forms-style">
-                    <form method="post" action="">
+                    <form method="post" action="{% url 'index' %}#contato">
                         {% csrf_token %}
 
                         <div class="form-group">
@@ -274,6 +287,14 @@
                 <h3>Frederico Magalhaes. Todos os direitos reservados.</h3>
             </div>
         </section>
+        <div class="btn-pageup">
+            <a href="#header">
+                <i class="fa-solid fa-chevron-up fa-2xl"></i>
+            </a>
+        </div>
     </footer>
+
+    <script src="{% static 'js/index.js' %}"></script>
+
 </body>
 </html>
