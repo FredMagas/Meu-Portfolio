@@ -66,7 +66,7 @@ ul {
 }
 
 .nome h1 {
-    margin-right: 15px;
+    margin-right: 1vw;
 }
 
 .nome i {
@@ -164,6 +164,33 @@ nav .icon {
 
     .nome {
         text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 394px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nome {
+        text-align: center;
+    }
+
+    .apresentacao {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10vh;
+    }
+
+    .text-redes.mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 }
@@ -534,7 +561,7 @@ footer {
 }
 
 /* Responsividade */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 976px) {
     .grid-container {
         grid-template-columns: 1fr; /* Uma coluna em telas menores */
     }
