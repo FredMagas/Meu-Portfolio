@@ -68,6 +68,8 @@
 
                             <li>Cursando Análise e Desenvolvimento de Sistemas</li>
 
+                            <li>Iniciando curso na EBAC de Full Stack Python.</li>
+
                             <li>Interesse em desenvolvimento Full Stack</li>
 
                             <li>Buscando uma oportunidade para atuar como desenvolvedor</li>
@@ -76,7 +78,9 @@
                 </div>
                 
                 <div class="curriculo">
-                    <button class="btn-curriculo">Download CV</button>
+                    <a href="" target="_blank">
+                        <button class="btn-curriculo">Download CV</button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -124,57 +128,30 @@
                     Portfolio:
                 </h2>
                 <div class="grid-container">
+                    {% for item in portfolio_items %}
                     <div class="grid-item">
                         <div class="port-content">
-                            <img src="{% static 'images/apresentacao.jpg' %}" alt="Imagem 1">
-                            <h5>Site institucional - FY Equipamentos</h5>
+                            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.description }}</p>
                         </div>
                         <div class="port-techs">
-                            <i class="fa-brands fa-python fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-html5 fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-css3-alt fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-js fa-lg" style="color: #33db96;"></i>
+                            {% for tech in item.technologies.split %}
+                                <i class="fa-brands {{ tech }} fa-lg" style="color: #33db96;"></i>
+                            {% endfor %}
                         </div>
                         <div class="port-btn">
-                            <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
+                            <a href="{{ item.link }}" target="_blank">
+                                <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
+                            </a>
+                            {% if item.github_link %}
+                            <a href="{{ item.github_link }}" target="_blank">
+                                <button><i class="fa-brands fa-github fa-lg" style="color: #ffffff;"></i>GitHub</button>
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
-
-
-                    <div class="grid-item">
-                        <div class="port-content">
-                            <img src="{% static 'images/apresentacao.jpg' %}" alt="Imagem 2">
-                            <h5>Conversor de Unidades</h5>
-                        </div>
-                        <div class="port-techs">
-                            <i class="fa-brands fa-python fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-html5 fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-css3-alt fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-js fa-lg" style="color: #33db96;"></i>
-                        </div>
-                        <div class="port-btn">
-                            <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
-                            <button><i class="fa-brands fa-github fa-lg" style="color: #ffffff;"></i>GitHub</button>
-                        </div>
-                    </div>
-
-                    <div class="grid-item">
-                        <div class="port-content">
-                            <img src="{% static 'images/apresentacao.jpg' %}" alt="Imagem 3">
-                            <h5>Descrição da imagem 3</h5>
-                        </div>
-                        <div class="port-techs">
-                            <i class="fa-brands fa-python fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-html5 fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-css3-alt fa-lg" style="color: #33db96;"></i>
-                            <i class="fa-brands fa-js fa-lg" style="color: #33db96;"></i>
-                        </div>
-                        <div class="port-btn">
-                            <button><i class="fa-solid fa-display" style="color: #ffffff;"></i>Acessar</button>
-                            <button><i class="fa-brands fa-github fa-lg" style="color: #ffffff;"></i>GitHub</button>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
             </div>
         </section>
         <section id="contato">

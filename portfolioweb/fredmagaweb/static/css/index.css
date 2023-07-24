@@ -168,19 +168,14 @@ nav .icon {
 
 }
 
-@media screen and (max-width: 394px) {
-    .navbar {
-        display: flex;
-        flex-direction: column;
-    }
-
+@media screen and (max-width: 396px) {
     .nome {
         text-align: center;
     }
 
     .apresentacao {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
         margin-top: 10vh;
@@ -193,6 +188,13 @@ nav .icon {
         align-items: center;
     }
 
+}
+
+@media screen and (max-width: 376px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .apresentacao {
@@ -512,6 +514,10 @@ footer {
 
 }
 
+.port-content p {
+    color: white;
+}
+
 .port-techs {
     display: flex;
     flex-direction: row;
@@ -554,7 +560,7 @@ footer {
     background-color: #18744d;
 }
 
-.grid-item h5 {
+.grid-item h4 {
     color: white;
     margin: 0;
     padding: 4vh;
@@ -568,7 +574,7 @@ footer {
 
     .apresentacao {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
         padding-top: 15vh;

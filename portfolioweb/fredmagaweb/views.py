@@ -3,11 +3,14 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import EmailMessage
 from .forms import ContatoForm
+from .models import PortfolioItem
 from django.contrib import messages
 
 # Create your views here.
 
 def index(request):
+    portfolio_items = PortfolioItem.objects.all()
+
     if request.method == 'POST':
             form = ContatoForm(request.POST)
             if form.is_valid():
@@ -44,4 +47,4 @@ def index(request):
                 return HttpResponseRedirect(reverse('index') + '#contato')
     else:
         form = ContatoForm()
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'portfolio_items': portfolio_items, 'form': form})
