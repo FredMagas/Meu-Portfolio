@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from decouple import config
 from django.core.management.utils import get_random_secret_key
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -147,3 +148,5 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
+
+django_heroku.settings(locals())
