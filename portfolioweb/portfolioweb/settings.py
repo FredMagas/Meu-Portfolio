@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from decouple import config
 from django.core.management.utils import get_random_secret_key
-import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['fredericomagalhaes.com.br']
+ALLOWED_HOSTS = ['fredericomagalhaes.com.br', ' meu-portfolio-735c16ae6d44.herokuapp.com/']
 
 
 # Application definition
@@ -149,5 +148,3 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
-
-django_heroku.settings(locals())
