@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 os.environ.setdefault('SECRET_KEY', get_random_secret_key())
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com']
 
@@ -125,9 +125,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
+STATICFILES_DIRS = [
+    BASE_DIR / 'static/',
+]
 
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
