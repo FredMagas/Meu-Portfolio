@@ -30,7 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com']
 
 
 # Application definition
@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'fredmagaweb/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
