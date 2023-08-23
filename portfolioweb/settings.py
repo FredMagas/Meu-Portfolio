@@ -30,7 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com','fredericomagalhaes.com','fredericomagalhaes.com.br']
 
 
 # Application definition
