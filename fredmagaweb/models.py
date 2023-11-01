@@ -11,7 +11,7 @@ class Contato(models.Model):
 class PortfolioItem(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='static/images/')
+    image = models.ImageField(upload_to='media/images/')
     technologies = models.CharField(max_length=200)
     link = models.URLField(blank=True)
     github_link = models.URLField(blank=True)
