@@ -159,9 +159,9 @@ EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hvrrwsz8d',
-    'API_KEY': '597783428575399',
-    'API_SECRET': 'LdtrhUI_HFqEHY9abrW0K9VJHoA',
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
