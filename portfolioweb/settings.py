@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fredmagaweb'
+    'fredmagaweb',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -156,6 +158,13 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hvrrwsz8d',
+    'API_KEY': '597783428575399',
+    'API_SECRET': 'LdtrhUI_HFqEHY9abrW0K9VJHoA',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True
