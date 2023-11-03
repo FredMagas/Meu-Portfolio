@@ -9,7 +9,7 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    portfolio_items = PortfolioItem.objects.all()
+    portfolio_items = PortfolioItem.objects.filter(publicado=True)
 
     if request.method == 'POST':
             form = ContatoForm(request.POST)
