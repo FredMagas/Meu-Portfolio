@@ -9,13 +9,8 @@ def make_published(modeladmin, request, queryset):
     queryset.update(publicado=True)
 make_published.short_description = "Publicar casos selecionados"
 
-class PortfolioItemInline(admin.StackedInline):
-    model = PortfolioItem
-    extra = 1
-
-class CaseAdmin(admin.ModelAdmin):
+class PortfolioItemAdmin(admin.ModelAdmin):
     actions = [make_published, make_unpublished]
     list_display = ('title', 'publicado')
-    inlines = [PortfolioItemInline]
 
-admin.site.register(PortfolioItem, CaseAdmin)
+admin.site.register(PortfolioItem, PortfolioItemAdmin)
