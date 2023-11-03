@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import PortfolioItem
 
-admin.site.register(PortfolioItem)
+
 
 def make_unpublished(modeladmin, request, queryset):
     queryset.update(publicado=False)
@@ -17,5 +17,7 @@ class PortfolioItemInline(admin.StackedInline):
 
 class CaseAdmin(admin.ModelAdmin):
     actions = [make_published, make_unpublished]
-    list_display = ('titulo', 'publicado')
+    list_display = ('title', 'publicado')
     inlines = [PortfolioItemInline]
+
+admin.site.register(PortfolioItem, CaseAdmin)
