@@ -20,4 +20,4 @@ class CaseAdmin(admin.ModelAdmin):
     list_display = ('title', 'publicado')
     inlines = [PortfolioItemInline]
 
-admin.site.register(PortfolioItem, CaseAdmin)
+admin.site.register(PortfolioItem)
