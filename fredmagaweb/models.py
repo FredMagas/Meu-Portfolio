@@ -15,6 +15,7 @@ class PortfolioItem(models.Model):
     technologies = models.CharField(max_length=200)
     link = models.URLField(blank=True)
     github_link = models.URLField(blank=True)
+    publicado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

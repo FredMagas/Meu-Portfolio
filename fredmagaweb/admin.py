@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import PortfolioItem
 
-
-
 def make_unpublished(modeladmin, request, queryset):
     queryset.update(publicado=False)
 make_unpublished.short_description = "Despublicar casos selecionados"
@@ -20,4 +18,4 @@ class CaseAdmin(admin.ModelAdmin):
     list_display = ('title', 'publicado')
     inlines = [PortfolioItemInline]
 
-admin.site.register(PortfolioItem)
+admin.site.register(PortfolioItem, CaseAdmin)
