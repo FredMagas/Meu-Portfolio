@@ -8,6 +8,7 @@
     <title>Portfolio - Frederico Magalhães</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 <body>
@@ -59,11 +60,11 @@
         </div>
         <section id="sobre-mim">
             <div class="sobre">
-                <h2>
+                <h2 data-aos="fade-right" data-aos-delay="100">
                     Sobre Mim:
                 </h2>
 
-                <div>
+                <div data-aos="fade-left" data-aos-delay="100">
                     <h4>
                         <ul>
                             <li>Estudando Python, Django e Front-End desde 2022</li>
@@ -79,7 +80,7 @@
                     </h4>
                 </div>
                 
-                <div class="curriculo">
+                <div class="curriculo" data-aos="flip-left">
                     <a href="{% static 'files/Curriculo Frederico Augusto Magalhaes - 2023.pdf' %}" target="_blank">
                         <button class="btn-curriculo">Download CV</button>
                     </a>
@@ -89,22 +90,22 @@
         <section id="experiencia">
             <div class="timeline">
                 <ul>
-                    <li>
+                    <li data-aos="fade-left" data-aos-delay="300">
                         <div class="data">2021</div>
                         <div class="evento">Graduação Engenharia Mecânica</div>
                     </li>
 
-                    <li>
+                    <li data-aos="fade-right" data-aos-delay="300">
                         <div class="data">2022</div>
                         <div class="evento">Me aprofundando na linguagem Python e conhecendo melhor sobre o Django, Front-End e Back-End.</div>
                     </li>
 
-                    <li>
+                    <li data-aos="fade-left" data-aos-delay="300">
                         <div class="data">2023</div>
                         <div class="evento">Iniciando curso na EBAC de Full Stack Python e ADS na Estácio, para aprimorar meus conhecimentos de programação.</div>
                     </li>
 
-                    <li>
+                    <li data-aos="fade-right" data-aos-delay="300">
                         <div class="data">Até o Momento</div>
                         <div class="evento">Em busca de minha primeira vaga como desenvolvedor.</div>
                     </li>
@@ -128,10 +129,10 @@
         
         <section id="portfolio">
             <div class="portfolio">
-                <h2>
+                <h2 data-aos="fade-right" data-aos-delay="100">
                     Portfolio:
                 </h2>
-                <div class="grid-container">
+                <div class="grid-container" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200">
                     {% for item in portfolio_items %}
                     <div class="grid-item">
                         <div class="port-content">
@@ -160,10 +161,10 @@
         </section>
         <section id="contato">
             <div class="forms">
-                <h2>
+                <h2 data-aos="fade-right" data-aos-delay="100">
                     Entre em Contato:
                 </h2>
-                <div class="forms-style">
+                <div class="forms-style" data-aos="flip-left" data-aos-duration="500" data-aos-delay="200">
                     <form method="post" action="{% url 'index' %}#contato">
                         {% csrf_token %}
 
@@ -203,7 +204,7 @@
                         <div class="form-group">
                             <textarea name="mensagem" rows="8" class="form-control" placeholder="Mensagem" required autocomplete="off"></textarea>
                         </div>
-                        <div class="form-group messages">
+                        <div class="form-group messages" data-aos="flip-right">
                             <button class="btn-enviar-contato">Enviar</button>
                             {% if messages %}
                             <ul>
@@ -221,12 +222,12 @@
 
     <footer>
         <section id="links">
-            <div class="onde-encontrar">
-                <h2>Onde me Encontrar:</h2>
+            <div class="onde-encontrar" data-aos="fade-left" data-aos-delay="50">
+                <h2 data-aos="fade-right" data-aos-delay="100">Onde me Encontrar:</h2>
             </div>
             <div class="redes-sociais">
                 <div class="text-redes mobile">
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <a href="https://www.linkedin.com/in/frederico-magalh%C3%A3es/" target="_blank">
                             <i class="fa-brands fa-linkedin fa-2xl" style="color: #33db96;"></i>
                         </a>
@@ -235,7 +236,7 @@
                         </h4>
                     </div>
 
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <a href="https://github.com/FredMagas" target="_blank">
                             <i class="fa-brands fa-github fa-2xl" style="color: #33db96;"></i>
                         </a>
@@ -244,7 +245,7 @@
                         </h4>
                     </div>
 
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <a href="mailto:fredericomaga@hotmail.com" target="_blank">
                             <i class="fa-solid fa-envelope fa-2xl" style="color: #33db96;"></i>
                         </a>
@@ -253,7 +254,7 @@
                         </h4>
                     </div>
 
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <a href="https://wa.me//5535997303061?text=Olá, tudo bem? Estamos entrando em contato através do seu site de portfolio." target="_blank">
                             <i class="fa-brands fa-whatsapp fa-2xl" style="color: #33db96;"></i>
                         </a>
@@ -264,7 +265,7 @@
                 </div>
             </div>
 
-            <div class="direitos">
+            <div class="direitos" data-aos="fade-right" data-aos-delay="100">
                 <h3>&copy; Frederico Magalhaes. Todos os direitos reservados.</h3>
             </div>
         </section>
@@ -276,6 +277,14 @@
     </footer>
 
     <script src="{% static 'js/index.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            disable: function() {
+                return window.innerWidth < 1024;
+            }
+            });
+    </script>
 
 </body>
 </html>
