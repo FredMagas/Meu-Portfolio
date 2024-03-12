@@ -297,6 +297,10 @@ h2 {
     list-style: none;
 }
 
+ul ul {
+    margin-left: 40px;
+}
+
 .sobre ul li {
     line-height: 1.5;
 }
