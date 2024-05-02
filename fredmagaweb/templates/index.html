@@ -175,18 +175,18 @@
                         {% csrf_token %}
 
                         <div class="form-group">
-                            <input type="text" name="nome" class="form-control" placeholder="Nome" required autocomplete="name">
+                            <input type="text" name="nome" class="form-control" placeholder="Nome" maxlength="40" required autocomplete="name">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="E-mail" required autocomplete="email">
+                            <input type="email" name="email" class="form-control" placeholder="E-mail" maxlength="50" required autocomplete="email">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="empresa" class="form-control" placeholder="Empresa" required autocomplete="organization">
+                            <input type="text" name="empresa" class="form-control" placeholder="Empresa" maxlength="40" required autocomplete="organization">
                         </div>
                         <div class="row">
                             <div>
                                 <div class="form-group">
-                                    <input type="text" name="telefone" class="form-control" placeholder="Telefone" required autocomplete="tel">
+                                    <input type="text" name="telefone" class="form-control" placeholder="Telefone" maxlength="30" required autocomplete="tel">
                                 </div>
                             </div>
                         </div>
