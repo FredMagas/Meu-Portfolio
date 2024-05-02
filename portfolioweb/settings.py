@@ -32,6 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com','fredericomagalhaes.com','fredericomagalhaes.com.br', 'www.fredericomagalhaes.com','www.fredericomagalhaes.com.br']
 
+CSRF_TRUSTED_ORIGINS = ['127.0.0.1', 'meu-portfolio-a6583c2321d1.herokuapp.com', 'fredericomagalhaes.com', 'fredericomagalhaes.com.br', 'www.fredericomagalhaes.com', 'www.fredericomagalhaes.com.br']
 
 # Application definition
 
