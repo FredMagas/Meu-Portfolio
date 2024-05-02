@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # os.environ.setdefault('SECRET_KEY')
 # SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com','fredericomagalhaes.com','fredericomagalhaes.com.br', 'www.fredericomagalhaes.com','www.fredericomagalhaes.com.br']
 
