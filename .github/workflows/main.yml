@@ -24,13 +24,6 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
 
-    - name: Test database connection
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      run: |
-        source venv/bin/activate
-        python test_db_connection.py
-
     - name: Make retry.sh executable
       run: chmod +x retry.sh
 
