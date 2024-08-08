@@ -390,7 +390,7 @@ form {
 }
 
 .form-group {
-    margin: 2vh;
+    margin: 1.5vh;
 }
 
 input, textarea {
@@ -405,7 +405,7 @@ textarea {
 }
 
 select {
-    width: 51.5vw;
+    width: 51.8vw;
     border: none;
     border-radius: 1vh;
     padding: 1.5vh;
@@ -597,5 +597,27 @@ footer {
 
     .form-group {
         margin: 1vh;
+    }
+
+    select {
+        width: 52.8vw;
+    }
+}
+
+@media screen and (max-width: 976px) {
+    select {
+        width: 52.8vw;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    select {
+        width: 53.8vw;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    select {
+        width: 54.8vw;
     }
 }
