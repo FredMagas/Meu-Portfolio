@@ -76,7 +76,7 @@ jobs:
         DJANGO_SUPERUSER_PASSWORD: ${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
       run: |
         source venv/bin/activate
-        python manage.py createsuperuser
+        python manage.py createsuperuser --noinput
 
     - name: Trigger Render Deploy
       env:
