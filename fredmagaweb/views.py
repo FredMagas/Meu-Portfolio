@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage
 from .forms import ContatoForm
 from .models import PortfolioItem
 from django.contrib import messages
+import requests
 
 # Create your views here.
 
@@ -12,7 +13,24 @@ def index(request):
     portfolio_items = PortfolioItem.objects.filter(publicado=True)
 
     if request.method == 'POST':
-            form = ContatoForm(request.POST)
+        form = ContatoForm(request.POST)
+        
+        # Capturando o token do Turnstile
+        turnstile_token = request.POST.get('cf-turnstile-response')
+        turnstile_secret = 'SUA_CHAVE_SECRETA_DO_TURNSTILE'
+        
+        # Verificando o token com a API do Cloudflare
+        response = requests.post(
+            'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+            data={
+                'secret': turnstile_secret,
+                'response': turnstile_token,
+                'remoteip': request.META.get('REMOTE_ADDR')
+            }
+        )
+        result = response.json()
+
+        if result.get("success"):
             if form.is_valid():
                 # Salvar os dados do formulário no banco de dados
                 form.save()
@@ -43,8 +61,13 @@ def index(request):
                 except:
                     messages.error(request, 'Ocorreu um erro ao enviar o formulário. Por favor, tente novamente mais tarde.')
 
-                
                 return HttpResponseRedirect(reverse('index') + '#contato')
+            else:
+                messages.error(request, 'Por favor, corrija os erros no formulário.')
+        else:
+            messages.error(request, 'Falha na verificação do Turnstile. Por favor, tente novamente.')
+
     else:
         form = ContatoForm()
+
     return render(request, 'index.html', {'portfolio_items': portfolio_items, 'form': form})
