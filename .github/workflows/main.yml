@@ -29,7 +29,7 @@ jobs:
 
     - name: Run migrations
       env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Certifique-se de adicionar esta variável nos segredos do GitHub
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
         EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
@@ -43,8 +43,15 @@ jobs:
         source venv/bin/activate
         ./retry.sh
 
+    - name: Collect static files
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      run: |
+        source venv/bin/activate
+        python manage.py collectstatic --noinput
+
     - name: Trigger Render Deploy
       env:
-        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}  # Usando o segredo do hook de deploy
+        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
       run: |
         curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
