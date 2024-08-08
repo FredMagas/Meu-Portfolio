@@ -24,6 +24,9 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
 
+    - name: Make retry.sh executable
+      run: chmod +x retry.sh
+
     - name: Run migrations
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Certifique-se de adicionar esta variável nos segredos do GitHub
