@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage
 from .forms import ContatoForm
 from .models import PortfolioItem
 from django.contrib import messages
+from decouple import config
 import requests
 
 # Create your views here.
@@ -17,7 +18,7 @@ def index(request):
         
         # Capturando o token do Turnstile
         turnstile_token = request.POST.get('cf-turnstile-response')
-        turnstile_secret = 'SUA_CHAVE_SECRETA_DO_TURNSTILE'
+        turnstile_secret = config('SECRET_TURNSTILE_KEY')
         
         # Verificando o token com a API do Cloudflare
         response = requests.post(
