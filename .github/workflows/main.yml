@@ -38,8 +38,7 @@ jobs:
         CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
       run: |
         source venv/bin/activate
-        python manage.py makemigrations
-        python manage.py migrate
+        ./retry.sh
 
     - name: Trigger Render Deploy
       env:
