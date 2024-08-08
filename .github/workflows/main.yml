@@ -1,0 +1,39 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main  # Substitua 'main' pela sua branch principal, se diferente
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  # Substitua pela versão do Python que você está usando
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+
+    - name: Run migrations
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Certifique-se de adicionar esta variável nos segredos do GitHub
+      run: |
+        source venv/bin/activate
+        python manage.py makemigrations
+        python manage.py migrate
+
+    - name: Trigger Render Deploy
+      env:
+        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}  # Usando o segredo do hook de deploy
+      run: |
+        curl -X POST "$RENDER_DEPLOY_HOOK"
