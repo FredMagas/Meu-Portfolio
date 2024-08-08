@@ -47,4 +47,4 @@ jobs:
       env:
         RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}  # Usando o segredo do hook de deploy
       run: |
-        curl -X POST "$RENDER_DEPLOY_HOOK"
+        curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
