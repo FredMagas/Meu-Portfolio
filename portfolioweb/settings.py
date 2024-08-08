@@ -32,7 +32,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','meu-portfolio-a6583c2321d1.herokuapp.com', 'meu-portfolio-lkpq.onrender.com','fredericomagalhaes.com','fredericomagalhaes.com.br', 'www.fredericomagalhaes.com','www.fredericomagalhaes.com.br']
 
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'https://meu-portfolio-a6583c2321d1.herokuapp.com', 'meu-portfolio-lkpq.onrender.com', 'https://fredericomagalhaes.com', 'https://fredericomagalhaes.com.br', 'https://www.fredericomagalhaes.com', 'https://www.fredericomagalhaes.com.br']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'https://meu-portfolio-a6583c2321d1.herokuapp.com', 'https://meu-portfolio-lkpq.onrender.com', 'https://fredericomagalhaes.com', 'https://fredericomagalhaes.com.br', 'https://www.fredericomagalhaes.com', 'https://www.fredericomagalhaes.com.br']
 
 # Application definition
 
