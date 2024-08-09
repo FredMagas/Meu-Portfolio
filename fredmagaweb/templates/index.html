@@ -91,13 +91,9 @@
                         <a href="{% url 'download_curriculo' curriculo.id %}" target="_blank">
                             <button class="btn-curriculo">Download CV</button>
                         </a>
-                    {% else %}
-                        {% if messages %}
-                            <ul>
-                                {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
+                        {% else %}
+                        {% if curriculo_message %}
+                            <p>{{ curriculo_message }}</p>
                         {% endif %}
                     {% endif %}
                 </div>

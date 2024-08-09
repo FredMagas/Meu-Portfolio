@@ -15,8 +15,9 @@ def index(request):
     portfolio_items = PortfolioItem.objects.filter(publicado=True)
     curriculo = Curriculo.objects.last()  # Obtém o currículo mais recente
 
+    curriculo_message = None
     if not curriculo:
-        messages.error(request, 'O currículo não está disponível para download no momento.')
+        curriculo_message = 'O currículo não está disponível para download no momento.'
 
     if request.method == 'POST':
         form = ContatoForm(request.POST)
@@ -76,7 +77,7 @@ def index(request):
     else:
         form = ContatoForm()
 
-    return render(request, 'index.html', {'portfolio_items': portfolio_items,'curriculo': curriculo, 'form': form})
+    return render(request, 'index.html', {'portfolio_items': portfolio_items,'curriculo': curriculo, 'form': form, 'curriculo_message': curriculo_message})
 
 def download_curriculo(request, curriculo_id):
     curriculo = get_object_or_404(Curriculo, id=curriculo_id)
