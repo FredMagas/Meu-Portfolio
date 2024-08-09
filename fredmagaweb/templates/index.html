@@ -87,9 +87,19 @@
                 </div>
                 
                 <div class="curriculo" data-aos="flip-left">
-                    <a href="{% static 'files/Curriculo Frederico Augusto Magalhaes - 2023.pdf' %}" target="_blank">
-                        <button class="btn-curriculo">Download CV</button>
-                    </a>
+                    {% if curriculo %}
+                        <a href="{{ curriculo.arquivo.url }}" target="_blank">
+                            <button class="btn-curriculo">Download CV</button>
+                        </a>
+                    {% else %}
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </section>

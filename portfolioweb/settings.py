@@ -13,7 +13,9 @@ import os
 from pathlib import Path
 from decouple import config
 from django.core.management.utils import get_random_secret_key
+from django.core.files.storage import FileSystemStorage
 import dj_database_url
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -145,6 +147,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / "media"
+
+PDF_STORAGE = FileSystemStorage(location=os.path.join(BASE_DIR, 'media/'))
 
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 

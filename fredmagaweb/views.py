@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import EmailMessage
 from .forms import ContatoForm
-from .models import PortfolioItem
+from .models import PortfolioItem, Curriculo
 from django.contrib import messages
 from decouple import config
 import requests
@@ -12,6 +12,10 @@ import requests
 
 def index(request):
     portfolio_items = PortfolioItem.objects.filter(publicado=True)
+    curriculo = Curriculo.objects.last()  # Obtém o currículo mais recente
+
+    if not curriculo:
+        messages.error(request, 'O currículo não está disponível para download no momento.')
 
     if request.method == 'POST':
         form = ContatoForm(request.POST)
@@ -71,4 +75,4 @@ def index(request):
     else:
         form = ContatoForm()
 
-    return render(request, 'index.html', {'portfolio_items': portfolio_items, 'form': form})
+    return render(request, 'index.html', {'portfolio_items': portfolio_items,'curriculo': curriculo, 'form': form})

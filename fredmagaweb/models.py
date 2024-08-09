@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Contato(models.Model):
     nome = models.CharField(max_length=40)
@@ -19,3 +20,14 @@ class PortfolioItem(models.Model):
 
     def __str__(self):
         return self.title
+
+class Curriculo(models.Model):
+    arquivo = models.FileField(upload_to='curriculos/', storage=settings.PDF_STORAGE)
+    data_upload = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Curriculo {self.id} - {self.data_upload.strftime('%d/%m/%Y')}"
+
+    class Meta:
+        verbose_name = "Currículo"
+        verbose_name_plural = "Currículos"
