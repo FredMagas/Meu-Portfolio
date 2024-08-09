@@ -22,12 +22,17 @@ class PortfolioItem(models.Model):
         return self.title
 
 class Curriculo(models.Model):
-    arquivo = models.FileField(upload_to='curriculos/', storage=settings.PDF_STORAGE)
+    arquivo = models.FileField(upload_to='curriculos/')
     data_upload = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Curriculo {self.id} - {self.data_upload.strftime('%d/%m/%Y')}"
 
-    class Meta:
-        verbose_name = "Currículo"
-        verbose_name_plural = "Currículos"
+    def save(self, *args, **kwargs):
+        # Garantir que o arquivo PDF seja tratado como 'raw'
+        self.arquivo.upload_options = {'resource_type': 'raw'}
+        super().save(*args, **kwargs)
+
+    # class Meta:
+    #     verbose_name = "Currículo"
+    #     verbose_name_plural = "Currículos"
