@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from cloudinary.uploader import upload
 
 class Contato(models.Model):
     nome = models.CharField(max_length=40)
@@ -25,14 +26,16 @@ class Curriculo(models.Model):
     arquivo = models.FileField(upload_to='curriculos/')
     data_upload = models.DateTimeField(auto_now_add=True)
 
+    def save(self, *args, **kwargs):
+        # Usar o Cloudinary uploader diretamente para garantir que o arquivo seja tratado como 'raw'
+        if self.arquivo and not self.pk:
+            upload_result = upload(self.arquivo, resource_type="raw")
+            self.arquivo.name = upload_result['public_id'] + '.' + upload_result['format']
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"Curriculo {self.id} - {self.data_upload.strftime('%d/%m/%Y')}"
 
-    def save(self, *args, **kwargs):
-        # Garantir que o arquivo PDF seja tratado como 'raw'
-        self.arquivo.upload_options = {'resource_type': 'raw'}
-        super().save(*args, **kwargs)
-
-    # class Meta:
-    #     verbose_name = "Currículo"
-    #     verbose_name_plural = "Currículos"
+    class Meta:
+        verbose_name = "Currículo"
+        verbose_name_plural = "Currículos"
