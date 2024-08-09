@@ -148,7 +148,7 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / "media"
 
-PDF_STORAGE = FileSystemStorage(location=os.path.join(BASE_DIR, 'media/'))
+PDF_STORAGE = FileSystemStorage(location=os.path.join(BASE_DIR, 'media/curriculos'))
 
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
