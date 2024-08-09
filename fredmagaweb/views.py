@@ -6,6 +6,7 @@ from .forms import ContatoForm
 from .models import PortfolioItem, Curriculo
 from django.contrib import messages
 from decouple import config
+from django.shortcuts import get_object_or_404
 import requests
 
 # Create your views here.
@@ -76,3 +77,7 @@ def index(request):
         form = ContatoForm()
 
     return render(request, 'index.html', {'portfolio_items': portfolio_items,'curriculo': curriculo, 'form': form})
+
+def download_curriculo(request, curriculo_id):
+    curriculo = get_object_or_404(Curriculo, id=curriculo_id)
+    return redirect(curriculo.arquivo.url)

@@ -88,7 +88,7 @@
                 
                 <div class="curriculo" data-aos="flip-left">
                     {% if curriculo %}
-                        <a href="{{ curriculo.arquivo.url }}" target="_blank">
+                        <a href="{% url 'download_curriculo' curriculo.id %}" target="_blank">
                             <button class="btn-curriculo">Download CV</button>
                         </a>
                     {% else %}
