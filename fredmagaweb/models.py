@@ -35,7 +35,7 @@ class Curriculo(models.Model):
 
 class Certificate(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='certificates/', default='')
+    image = models.ImageField(upload_to='certificates/', max_length=255, default='')
 
     def __str__(self):
         return self.title
