@@ -31,7 +31,7 @@ $(document).ready(function(){
       loop:true,
       margin:10,
       autoPlay:true,
-      autoplayTimeout:1000,
+      autoplayTimeout:5000,
       autoplayHoverPause:true,
       responsive:{
           0:{
