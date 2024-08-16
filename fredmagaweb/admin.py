@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PortfolioItem, Curriculo
+from .models import PortfolioItem, Curriculo, Certificate
 
 def make_unpublished(modeladmin, request, queryset):
     queryset.update(publicado=False)
@@ -15,3 +15,6 @@ class PortfolioItemAdmin(admin.ModelAdmin):
 
 admin.site.register(PortfolioItem, PortfolioItemAdmin)
 admin.site.register(Curriculo)
+@admin.register(Certificate)
+class CertificateAdmin(admin.ModelAdmin):
+    list_display = ('title',)

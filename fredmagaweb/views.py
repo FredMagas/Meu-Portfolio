@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import EmailMessage
 from .forms import ContatoForm
-from .models import PortfolioItem, Curriculo
+from .models import PortfolioItem, Curriculo, Certificate
 from django.contrib import messages
 from decouple import config
 from django.shortcuts import get_object_or_404
@@ -14,6 +14,7 @@ import requests
 def index(request):
     portfolio_items = PortfolioItem.objects.filter(publicado=True)
     curriculo = Curriculo.objects.last()  # Obtém o currículo mais recente
+    certificates = Certificate.objects.all()
 
     curriculo_message = None
     if not curriculo:
@@ -77,7 +78,7 @@ def index(request):
     else:
         form = ContatoForm()
 
-    return render(request, 'index.html', {'portfolio_items': portfolio_items,'curriculo': curriculo, 'form': form, 'curriculo_message': curriculo_message})
+    return render(request, 'index.html', {'portfolio_items': portfolio_items,'curriculo': curriculo, 'form': form, 'curriculo_message': curriculo_message, 'certificates': certificates})
 
 def download_curriculo(request, curriculo_id):
     curriculo = get_object_or_404(Curriculo, id=curriculo_id)

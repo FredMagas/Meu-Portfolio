@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 
 </head>
 <body>
@@ -29,6 +31,7 @@
                         <li><a href="#sobre-mim">Sobre Mim</a></li>
                         <li><a href="#experiencia">Experiência</a></li>
                         <li><a href="#soft-skills">Skills</a></li>
+                        <li><a href="#certificados">Certificados</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#contato">Contato</a></li>
                         <li><a href="#links">Links</a></li>
@@ -98,8 +101,7 @@
                     {% endif %}
                 </div>
             </div>
-        </section>
-        <section id="experiencia">
+        
             <div class="timeline">
                 <ul>
                     <li data-aos="fade-left" data-aos-delay="300">
@@ -119,10 +121,40 @@
 
                     <li data-aos="fade-right" data-aos-delay="300">
                         <div class="data">Até o Momento</div>
-                        <div class="evento">Em busca da minha primeira vaga na área de Tecnologia.</div>
+                        <div class="evento">Em busca da minha primeira vaga na área de Tecnologia e trabalhando como freelancer.</div>
                     </li>
                 </ul>
             </div>
+        </section>
+
+        <section id="experiencia">
+            <div class="habilities">
+                <h2 data-aos="fade-right" data-aos-delay="100">
+                    Experiência:
+                </h2>
+
+                <div class="timeline">
+                    <ul>
+                        <li data-aos="fade-left" data-aos-delay="300">
+                            <div class="data">2023</div>
+                        </li>
+                        <li data-aos="fade-right" data-aos-delay="300">
+                            <div class="data">FY EQUIPAMENTOS</div>
+                            <div class="evento">- Desenvolvimento Site Institucional</div>
+                        </li>
+                        <li data-aos="fade-left" data-aos-delay="300">
+                            <div class="data">2024</div>
+                        </li>
+                        <li data-aos="fade-right" data-aos-delay="300">
+                            <div class="data">FY EQUIPAMENTOS</div>
+                            <div class="evento">- Inicio Desenvolvimento de um software para criação de orçamentos.</div>
+                        </li>
+                        <li data-aos="fade-left" data-aos-delay="300">
+                            <div class="data">ECO TREES</div>
+                            <div class="evento">- Inicio Desenvolvimento de uma plataforma de vendas.</div>
+                        </li>
+                    </ul>
+                </div>
         </section>
         
         <section id="soft-skills">
@@ -135,6 +167,26 @@
                     <h4 data-aos="fade-right" data-aos-delay="300">
                         <script src="https://tryhackme.com/badge/1748745"></script>
                     </h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificados">
+            <div class="certifications">
+                <div>
+                    <h2 data-aos="fade-right" data-aos-delay="100">
+                        Certificados:
+                    </h2>
+        
+                    <div class="owl-carousel owl-theme">
+                        {% for certificate in certificates %}
+                        <div class="item">
+                            <a href="{{ certificate.image.url }}" target="_blank">
+                                <img src="{{ certificate.image.url }}" alt="{{ certificate.title }}" style="border-radius: 15px;">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </section>
@@ -289,9 +341,11 @@
         </div>
     </footer>
 
-    <script src="{% static 'js/index.js' %}"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'assets/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
     <script>
         AOS.init({
             once: true,

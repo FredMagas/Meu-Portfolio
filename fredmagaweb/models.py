@@ -32,3 +32,10 @@ class Curriculo(models.Model):
     class Meta:
         verbose_name = "Currículo"
         verbose_name_plural = "Currículos"
+
+class Certificate(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='certificates/', default='')
+
+    def __str__(self):
+        return self.title
