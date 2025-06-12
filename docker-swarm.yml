@@ -2,8 +2,7 @@ version: "3.9"
 
 services:
   web:
-    image: ghcr.io/seu-usuario/portfolio:${PORTFOLIO_TAG:-latest}
-    env_file: .env
+    image: ghcr.io/fredmagas/meu-portfolio:latest
     secrets:
       - source: portfolio_secret_key
         target: django_secret_key
@@ -11,15 +10,20 @@ services:
       - email_host
       - email_host_user
       - email_host_password
+      - email_default
       - cloudinary_cloud_name
       - cloudinary_api_key
       - cloudinary_api_secret
       - secret_turnstile_key
+      - db_password
     environment:
       # caminhos para que python-decouple leia o conteúdo
       SECRET_KEY: /run/secrets/django_secret_key
+      EMAIL_PORT: /run/secrets/email_port
+      EMAIL_HOST: /run/secrets/email_host
       EMAIL_HOST_USER: /run/secrets/email_host_user
       EMAIL_HOST_PASSWORD: /run/secrets/email_host_password
+      DEFAULT_FROM_EMAIL: /run/secrets/email_default
       CLOUDINARY_CLOUD_NAME: /run/secrets/cloudinary_cloud_name
       CLOUDINARY_API_KEY: /run/secrets/cloudinary_api_key
       CLOUDINARY_API_SECRET: /run/secrets/cloudinary_api_secret
@@ -36,7 +40,7 @@ services:
         limits:
           memory: 256M
     ports:
-      - "8000:8000"
+      - "8010:8000"
     networks:
       - backend_portfolio
 
@@ -45,7 +49,9 @@ services:
     environment:
       POSTGRES_DB: portfoliodb
       POSTGRES_USER: portfolio
-      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_PASSWORD: /run/secrets/db_password
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
     volumes:
       - pgdata:/var/lib/postgresql/data
     secrets:
@@ -64,9 +70,13 @@ volumes:
 
 secrets:
   portfolio_secret_key:    {external: true}
+  email_port:              {external: true}
+  email_host:              {external: true}
   email_host_user:         {external: true}
   email_host_password:     {external: true}
+  email_default:           {external: true}
   cloudinary_cloud_name:   {external: true}
   cloudinary_api_key:      {external: true}
   cloudinary_api_secret:   {external: true}
   secret_turnstile_key:    {external: true}
+  db_password:             {external: true}
