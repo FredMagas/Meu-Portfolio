@@ -1,85 +1,85 @@
-name: Deploy to Render
+# name: Deploy to Render
 
-on:
-  push:
-    branches:
-      - main  # Substitua 'main' pela sua branch principal, se diferente
+# on:
+#   push:
+#     branches:
+#       - main  # Substitua 'main' pela sua branch principal, se diferente
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'  # Substitua pela versão do Python que você está usando
+#     - name: Set up Python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.11'  # Substitua pela versão do Python que você está usando
 
-    - name: Install dependencies
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
+#     - name: Install dependencies
+#       run: |
+#         python -m venv venv
+#         source venv/bin/activate
+#         pip install -r requirements.txt
 
-    - name: Make retry.sh executable
-      run: chmod +x retry.sh
+#     - name: Make retry.sh executable
+#       run: chmod +x retry.sh
 
-    - name: Run migrations
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-        DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
-        CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-        CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-        CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-      run: |
-        source venv/bin/activate
-        ./retry.sh
+#     - name: Run migrations
+#       env:
+#         DATABASE_URL: ${{ secrets.DATABASE_URL }}
+#         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#         EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+#         EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+#         EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+#         EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+#         DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
+#         CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+#         CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+#         CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+#       run: |
+#         source venv/bin/activate
+#         ./retry.sh
 
-    - name: Collect static files
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-        DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
-        CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-        CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-        CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-      run: |
-        source venv/bin/activate
-        python manage.py collectstatic --noinput
+#     - name: Collect static files
+#       env:
+#         DATABASE_URL: ${{ secrets.DATABASE_URL }}
+#         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#         EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+#         EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+#         EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+#         EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+#         DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
+#         CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+#         CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+#         CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+#       run: |
+#         source venv/bin/activate
+#         python manage.py collectstatic --noinput
     
-    # - name: Create superuser
-    #   env:
-    #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
-    #     SECRET_KEY: ${{ secrets.SECRET_KEY }}
-    #     EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-    #     EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-    #     EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-    #     EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-    #     DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
-    #     CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-    #     CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-    #     CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-    #     DJANGO_SUPERUSER_USERNAME: ${{ secrets.DJANGO_SUPERUSER_USERNAME }}
-    #     DJANGO_SUPERUSER_EMAIL: ${{ secrets.DJANGO_SUPERUSER_EMAIL }}
-    #     DJANGO_SUPERUSER_PASSWORD: ${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
-    #   run: |
-    #     source venv/bin/activate
-    #     python manage.py createsuperuser --noinput
+#     # - name: Create superuser
+#     #   env:
+#     #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+#     #     SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#     #     EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+#     #     EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+#     #     EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+#     #     EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+#     #     DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
+#     #     CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+#     #     CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+#     #     CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+#     #     DJANGO_SUPERUSER_USERNAME: ${{ secrets.DJANGO_SUPERUSER_USERNAME }}
+#     #     DJANGO_SUPERUSER_EMAIL: ${{ secrets.DJANGO_SUPERUSER_EMAIL }}
+#     #     DJANGO_SUPERUSER_PASSWORD: ${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
+#     #   run: |
+#     #     source venv/bin/activate
+#     #     python manage.py createsuperuser --noinput
 
-    - name: Trigger Render Deploy
-      env:
-        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
-      run: |
-        curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+#     - name: Trigger Render Deploy
+#       env:
+#         RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+#       run: |
+#         curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"

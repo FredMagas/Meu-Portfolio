@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+  web:
+    image: ghcr.io/seu-usuario/portfolio:${PORTFOLIO_TAG:-latest}
+    env_file: .env
+    secrets:
+      - source: portfolio_secret_key
+        target: django_secret_key
+      - email_port
+      - email_host
+      - email_host_user
+      - email_host_password
+      - cloudinary_cloud_name
+      - cloudinary_api_key
+      - cloudinary_api_secret
+      - secret_turnstile_key
+    environment:
+      # caminhos para que python-decouple leia o conteúdo
+      SECRET_KEY: /run/secrets/django_secret_key
+      EMAIL_HOST_USER: /run/secrets/email_host_user
+      EMAIL_HOST_PASSWORD: /run/secrets/email_host_password
+      CLOUDINARY_CLOUD_NAME: /run/secrets/cloudinary_cloud_name
+      CLOUDINARY_API_KEY: /run/secrets/cloudinary_api_key
+      CLOUDINARY_API_SECRET: /run/secrets/cloudinary_api_secret
+      SECRET_TURNSTILE_KEY: /run/secrets/secret_turnstile_key
+    deploy:
+      replicas: 2
+      update_config:
+        order: start-first 
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          memory: 256M
+    ports:
+      - "8000:8000"
+    networks:
+      - backend_portfolio
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: portfoliodb
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    secrets:
+      - db_password
+    networks:
+      - backend_portfolio
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  backend_portfolio:
+
+volumes:
+  pgdata:
+
+secrets:
+  portfolio_secret_key:    {external: true}
+  email_host_user:         {external: true}
+  email_host_password:     {external: true}
+  cloudinary_cloud_name:   {external: true}
+  cloudinary_api_key:      {external: true}
+  cloudinary_api_secret:   {external: true}
+  secret_turnstile_key:    {external: true}
