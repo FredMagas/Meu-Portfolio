@@ -1,6 +1,8 @@
 #!/bin/sh
 
-export POSTGRES_PASSWORD=$(cat /run/secrets/db_password)
+if [ -f /run/secrets/db_password ]; then
+    export POSTGRES_PASSWORD=$(cat /run/secrets/db_password)
+fi
 
 echo ">>> [Entrypoint] Rodando migrate check"
 python manage.py makemigrations --check --dry-run
