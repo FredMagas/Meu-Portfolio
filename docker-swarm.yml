@@ -42,7 +42,7 @@ services:
       update_config:
         order: start-first 
         parallelism: 1
-        delay: 10s
+        delay: 10s      
       restart_policy:
         condition: on-failure
       resources:
@@ -71,11 +71,33 @@ services:
       placement:
         constraints: [node.role == manager]
 
+  openlitespeed:
+    image: litespeedtech/openlitespeed:latest
+    container_name: portfolio-ols
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7080:7080"
+    volumes:
+      - staticfiles:/var/www/vhosts/portfolio/staticfiles
+      - media:/var/www/vhosts/portfolio/media
+      # Opcional: persistir configurações customizadas do OLS
+      - ./ols/conf:/usr/local/lsws/conf
+      - ./ols/vhosts:/usr/local/lsws/vhosts
+      - ./ols/admin/conf:/usr/local/lsws/admin/conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - web
+    networks:
+      - backend_portfolio
+
 networks:
   backend_portfolio:
 
 volumes:
   pgdata:
+  staticfiles:
+  media:
 
 secrets:
   portfolio_secret_key:    {external: true}
@@ -92,4 +114,4 @@ secrets:
   postgres_db:             {external: true}
   postgres_host:           {external: true}
   postgres_user:           {external: true}
-  postgres_port:           {external: true}
+  postgres_port:           {external: true}                             
