@@ -3,6 +3,9 @@ version: "3.9"
 services:
   web:
     image: ghcr.io/fredmagas/meu-portfolio:latest
+    volumes:
+      - staticfiles:/app/staticfiles
+      - media:/app/media
     secrets:
       - source: portfolio_secret_key
         target: django_secret_key
@@ -16,10 +19,6 @@ services:
       - cloudinary_api_secret
       - secret_turnstile_key
       - db_password
-      - postgres_db
-      - postgres_host
-      - postgres_port
-      - postgres_user
     environment:
       # caminhos para que python-decouple leia o conteúdo
       SECRET_KEY: /run/secrets/django_secret_key
@@ -32,11 +31,12 @@ services:
       CLOUDINARY_API_KEY: /run/secrets/cloudinary_api_key
       CLOUDINARY_API_SECRET: /run/secrets/cloudinary_api_secret
       SECRET_TURNSTILE_KEY: /run/secrets/secret_turnstile_key
-      POSTGRES_DB: /run/secrets/postgres_db
-      POSTGRES_USER: /run/secrets/postgres_user
       POSTGRES_PASSWORD: /run/secrets/db_password
-      POSTGRES_HOST: /run/secrets/postgres_host
-      POSTGRES_PORT: /run/secrets/postgres_port
+      POSTGRES_DB: portfoliodb
+      POSTGRES_USER: portfolio
+
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
     deploy:
       replicas: 2
       update_config:
@@ -58,7 +58,7 @@ services:
     environment:
       POSTGRES_DB: portfoliodb
       POSTGRES_USER: portfolio
-      POSTGRES_PASSWORD: /run/secrets/db_password
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
     volumes:
@@ -111,7 +111,3 @@ secrets:
   cloudinary_api_secret:   {external: true}
   secret_turnstile_key:    {external: true}
   db_password:             {external: true}
-  postgres_db:             {external: true}
-  postgres_host:           {external: true}
-  postgres_user:           {external: true}
-  postgres_port:           {external: true}                             
