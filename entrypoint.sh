@@ -1,5 +1,7 @@
 #!/bin/sh
+set -e
 
+# ── Banco de dados ──
 if [ -f /run/secrets/db_password ]; then
     export POSTGRES_PASSWORD=$(cat /run/secrets/db_password)
 fi
