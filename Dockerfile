@@ -11,11 +11,16 @@ RUN pip install --upgrade pip && \
 # Stage 2: runtime
 FROM python:3.12-slim
 WORKDIR /app
+
+# Instale libpq na imagem final!
+RUN apt-get update && \
+    apt-get install -y libpq5 && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY --from=builder /wheels /wheels
 RUN pip install --no-cache-dir /wheels/* && rm -rf /wheels
 COPY . .
 
-# Copie o entrypoint e dê permissão
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
