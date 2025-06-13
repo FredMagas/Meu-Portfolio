@@ -85,7 +85,7 @@ services:
       - ./ols/conf:/usr/local/lsws/conf
       - ./ols/vhosts:/usr/local/lsws/vhosts
       - ./ols/admin/conf:/usr/local/lsws/admin/conf
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      #- /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - web
     networks:
